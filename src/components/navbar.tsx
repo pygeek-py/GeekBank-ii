@@ -33,23 +33,20 @@ const Navbar = () => {
             {links.map((link) => (
               <h1
                 key={link.href}
-                className={`text-xl px-5 py-2 rounded-full cursor-pointer transition-colors ${
+                className={`text-xl rounded-full cursor-pointer transition-colors ${
                   pathname === link.href ? "bg-[#262626]" : ""
                 }`}
               >
-                <Link href={link.href}>{link.label}</Link>
+                <Link href={link.href} className="block px-5 py-2">{link.label}</Link>
               </h1>
             ))}
           </div>
 
-          {/* Auth Buttons */}
+          {/* Waitlist CTA */}
           <div className="flex items-center gap-8">
-            <h1 className="text-xl cursor-pointer">
-              <Link href="/signup">Sign Up</Link>
-            </h1>
-            <button className="px-7 py-3 rounded-full bg-[#CAFF33] text-black text-xl cursor-pointer">
-              <Link href="/signin">Login</Link>
-            </button>
+            <Link href="/waitlist" className="block px-7 py-3 rounded-full bg-[#CAFF33] text-black text-xl cursor-pointer">
+              Join the Waitlist
+            </Link>
           </div>
         </section>
       </div>
@@ -96,21 +93,18 @@ const Navbar = () => {
           {links.map((link) => (
             <h1
               key={link.href}
-              className={`text-lg cursor-pointer px-3 py-2 rounded-full ${
+              className={`text-lg cursor-pointer rounded-full ${
                 pathname === link.href ? "bg-[#262626]" : ""
               }`}
             >
-              <Link href={link.href} onClick={() => setMenuOpen(false)}>{link.label}</Link>
+              <Link href={link.href} onClick={() => setMenuOpen(false)} className="block px-3 py-2">{link.label}</Link>
             </h1>
           ))}
 
           <hr className="border-gray-700 my-4" />
-          <h1 className="text-lg cursor-pointer">
-            <Link href="/signup" onClick={() => setMenuOpen(false)}>Sign Up</Link>
-          </h1>
-          <button className="w-full py-3 rounded-full bg-[#CAFF33] text-black text-lg">
-            <Link href="/signin" onClick={() => setMenuOpen(false)}>Login</Link>
-          </button>
+          <Link href="/waitlist" onClick={() => setMenuOpen(false)} className="block w-full py-3 rounded-full bg-[#CAFF33] text-black text-lg text-center">
+            Join the Waitlist
+          </Link>
         </div>
       </div>
     </>

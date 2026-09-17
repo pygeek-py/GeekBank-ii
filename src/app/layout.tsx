@@ -31,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-[#1E1E1E] min-h-screen text-white overflow-x-hidden`}
       >
-        <img src="/Abstract-Design.png" alt="" className="absolute top-0 left-0" />
+        <img src="/Abstract-Design.png" alt="" className="absolute top-0 left-0 pointer-events-none select-none" />
         <div className="w-[98%] md:w-[90%] 2xl:w-[80%] mx-auto pt-[2rem]">
           <Navbar />
         {children}

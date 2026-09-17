@@ -5,7 +5,6 @@ import Testimonials from "@/components/Home/testimonials";
 
 const VerifyEmail = () => {
     const [code, setCode] = useState(Array(6).fill(""));
-    const[codei, setCodei] = useState("");
     const [loading, setLoading] = useState(false);
     const [loadingi, setLoadingi] = useState(false);
 
@@ -31,15 +30,11 @@ const VerifyEmail = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     const fullCode = code.join("");
-    console.log("Submitted code:", fullCode);
-    // call API here
     e.preventDefault
       setLoading(true);
-      // Here you would typically handle the form submission, e.g., send data to an API
       const userString = localStorage.getItem("user")
       const user = userString ? JSON.parse(userString) : null;
-      console.log(user);
-  
+
       try {
         const response = await fetch('https://bankapi-qks3.onrender.com/verify-email/', {
           method: 'POST',
@@ -57,14 +52,10 @@ const VerifyEmail = () => {
         }
   
         const data = await response.json();
-        console.log('Success:', data);
 
         if (data.detail === "Email verified successfully.") {
-
           router.replace("/signin");
         }
-
-        
       } catch (error) {
         console.error('Error:', error);
         // Handle error (e.g., show an error message to the user)
@@ -75,55 +66,11 @@ const VerifyEmail = () => {
 
   const router = useRouter();
 
-  
-  
-  
-    // const handleSubmit = async (e: React.FormEvent) => {
-    //   e.preventDefault
-    //   setLoading(true);
-    //   // Here you would typically handle the form submission, e.g., send data to an API
-    //   console.log("Form submitted with:", { codei });
-    //   localStorage.getItem("tokenRegister")
-  
-    //   try {
-    //     const response = await fetch('https://bankapi-qks3.onrender.com/auth/registration/verify-email/', {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `Bearer ${localStorage.getItem("tokenRegister")}`,
-    //       },
-    //       body: JSON.stringify({ key: codei }),
-    //     });
-  
-    //     if (!response.ok) {
-    //       throw new Error('Network response was not ok');
-    //     }
-  
-    //     const data = await response.json();
-    //     console.log('Success:', data);
-
-    //     if (data.detail === "ok") {
-
-    //       router.replace("/signin");
-    //     }
-
-        
-    //   } catch (error) {
-    //     console.error('Error:', error);
-    //     // Handle error (e.g., show an error message to the user)
-    //   } finally {
-    //   setLoading(false); // ✅ stop loading after request
-    // }
-    // };
-
-
     const handleDelete = async () => {
       setLoadingi(true);
-      // Here you would typically handle the form submission, e.g., send data to an AP
       const userString = localStorage.getItem("user")
       const user = userString ? JSON.parse(userString) : null;
-      console.log(user);
-  
+
       try {
         const response = await fetch('https://bankapi-qks3.onrender.com/auth/registration/resend-email/', {
           method: 'POST',
@@ -138,10 +85,7 @@ const VerifyEmail = () => {
           throw new Error('Network response was not ok');
         }
   
-        const data = await response.json();
-        console.log('Success:', data);
-
-        
+        await response.json();
       } catch (error) {
         console.error('Error:', error);
         // Handle error (e.g., show an error message to the user)
@@ -161,18 +105,8 @@ const VerifyEmail = () => {
             Verify your account to complete your registration.
           </h1>
 
-          {/* <div className="w-full flex items-center justify-between flex-wrap mt-[4rem]">
-            <input
-              type="text"
-              value={codei}
-              onChange={(e) => setCodei(e.target.value)}
-              placeholder="Enter Code"
-              className="w-full mx-auto md:mx-0 bg-[#1a1a1a] rounded-full py-5 px-5 text-xl border border-[#262626] focus:outline-none focus:border-[#CAFF33]"
-            />
-          </div> */}
-
           {/* input circle */}
-          <div className="flex justify-center gap-3 mt-[3rem]">
+          <div className="flex justify-center gap-2 sm:gap-3 mt-[3rem]">
             {code.map((digit, i) => (
               <input
                 key={i}
@@ -183,7 +117,7 @@ const VerifyEmail = () => {
                 value={digit}
                 onChange={(e) => handleChange(e.target.value, i)}
                 onKeyDown={(e) => handleKeyDown(e, i)}
-                className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[#262626] bg-[#1a1a1a] text-center text-xl text-white focus:outline-none focus:border-[#CAFF33]"
+                className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border border-[#262626] bg-[#1a1a1a] text-center text-xl text-white focus:outline-none focus:border-[#CAFF33]"
               />
             ))}
           </div>

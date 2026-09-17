@@ -15,8 +15,6 @@ const Signin = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault
-      // Here you would typically handle the form submission, e.g., send data to an API
-      console.log("Form submitted with:", { email, password });
       setLoading(true);
   
       try {
@@ -33,10 +31,8 @@ const Signin = () => {
         }
   
         const data = await response.json();
-        console.log('Success:', data);
         if (data.access) {
         localStorage.setItem("tokenLogin", data.access);
-        // localStorage.setItem("user", JSON.stringify(data.user));
   
         // ✅ redirect after success
         alert("Continue on the app")

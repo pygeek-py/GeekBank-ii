@@ -13,29 +13,10 @@ const Signup = () => {
   const[password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-//   function getCookie({name}: any) {
-//   let cookieValue = null;
-//   if (document.cookie && document.cookie !== "") {
-//     const cookies = document.cookie.split(";");
-//     for (let i = 0; i < cookies.length; i++) {
-//       const cookie = cookies[i].trim();
-//       // Does this cookie string begin with the name we want?
-//       if (cookie.substring(0, name.length + 1) === name + "=") {
-//         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-//         break;
-//       }
-//     }
-//   }
-//   return cookieValue;
-// }
-
-const router = useRouter();
-
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault
-    // Here you would typically handle the form submission, e.g., send data to an API
-    console.log("Form submitted with:", { firstName, lastName, email, password });
     setLoading(true);
 
     try {
@@ -52,7 +33,6 @@ const router = useRouter();
       }
 
       const data = await response.json();
-      console.log('Success:', data);
       if (data.access) {
       localStorage.setItem("tokenRegister", data.access);
       localStorage.setItem("user", JSON.stringify(data.user));

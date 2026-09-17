@@ -14,21 +14,21 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-1 mt-[1.2rem] md:mt-[2.5rem]">
-            <h1 className="text-lg md:text-xl px-2 md:px-5 py-2 rounded-full cursor-pointer">
-              <Link href="/">Home</Link>
+            <h1 className="text-lg md:text-xl rounded-full cursor-pointer">
+              <Link href="/" className="block px-2 md:px-5 py-2">Home</Link>
             </h1>
-            <h1 className="text-lg md:text-xl px-2 md:px-5 py-2 rounded-full cursor-pointer">
-              <Link href="/careers">
+            <h1 className="text-lg md:text-xl rounded-full cursor-pointer">
+              <Link href="/careers" className="block px-2 md:px-5 py-2">
               Careers
               </Link>
             </h1>
-            <h1 className="text-lg md:text-xl px-2 md:px-5 py-2 rounded-full cursor-pointer">
-              <Link href="/about">
+            <h1 className="text-lg md:text-xl rounded-full cursor-pointer">
+              <Link href="/about" className="block px-2 md:px-5 py-2">
               About
               </Link>
             </h1>
-            <h1 className="text-lg md:text-xl px-2 md:px-5 py-2 rounded-full cursor-pointer">
-              <Link href="/security">
+            <h1 className="text-lg md:text-xl rounded-full cursor-pointer">
+              <Link href="/security" className="block px-2 md:px-5 py-2">
               Security
               </Link>
             </h1>
